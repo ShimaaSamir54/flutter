@@ -31,21 +31,22 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  final List<Transaction>transactions = [
+  final List<Transaction>transactions =  [
     Transaction(
-         id: '1',
-        title: 'New Shoes ',
+         id: 'ppp',
+        title: 'New Shoes',
         amount: 9.2,
-        dateTime = DateTime.now()
+        dateTime: DateTime.now()
     ),
 
     Transaction(
         id: '2',
         title: 'New Bags ',
         amount: 6.5,
-        dateTime = DateTime.now()
+        dateTime : DateTime.now()
     )
   ];
+
 
   @override
   Widget build(BuildContext context) {
