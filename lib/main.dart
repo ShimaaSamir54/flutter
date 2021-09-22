@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import './Transaction.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,23 +33,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  final List<Transaction>transactions =  [
-    Transaction(
-         id: 'ppp',
-        title: 'New Shoes',
-        amount: 9.2,
-        dateTime: DateTime.now()
-    ),
-
-    Transaction(
-        id: '2',
-        title: 'New Bags ',
-        amount: 6.5,
-        dateTime : DateTime.now()
-    )
+  final List<Transaction> transactions = [
+    Transaction('1', 'New Shoes', 9.2, DateTime.now()),
+    Transaction('2', 'New Bags ', 6.5, DateTime.now())
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -63,12 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        // Column is also a layout widget. It takes a list of children and
-        // arranges them vertically. By default, it sizes itself to fit its
-        // children horizontally, and tries to be as tall as its parent.
-        //
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           // mainAxisAlignment (Column ->height)
@@ -77,12 +61,48 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Container(
                 width: double.infinity,
-                child: Card(child: Text('Chart'),
+                child: Card(
+                  child: Text('Chart'),
                   color: Colors.deepOrange,
                 )),
-            Card(child: Text('List of transaction'),
-              elevation: 25,
-              color: Colors.black,),
+            Column(
+              children: transactions
+                  .map((transaction) => Card(
+                        elevation: 5,
+                        child: Row(
+                          children: <Widget>[
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 10),
+                              padding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 16),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: Colors.purple, width: 2)),
+                              // width of border
+                              child: Text('\$ ${transaction.amount.toString()}'
+                                ,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.purple,
+                                    fontSize: 20),
+                              ),
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(transaction.title,
+                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold ),),
+                                Text(DateFormat().add_yMMMd().format(transaction.dateTime) ,
+                                style: TextStyle(color: Colors.grey),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ))
+                  .toList(),
+            )
           ],
         ),
       ),
