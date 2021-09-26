@@ -16,10 +16,6 @@ class _UserTransactionsState extends State<UserTransactions> {
     Transaction('1', 'New Shoes', 9.2, DateTime.now()),
     Transaction('2', 'New Bags ', 6.5, DateTime.now()),
     Transaction('3', 'New One ', 3.2,  DateTime.now()),
-    Transaction('4', 'New Big ', 6.5, DateTime.now()),
-    Transaction('5', 'New lol ', 2.5, DateTime.now()),
-    Transaction('6', 'New now ', 6.5, DateTime.now()),
-    Transaction('6', 'New No ', 10.5, DateTime.now()),
 
 
 

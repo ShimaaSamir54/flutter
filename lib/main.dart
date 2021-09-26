@@ -43,6 +43,12 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions:<Widget> [//Add icon to toolbar
+          IconButton(
+          icon:Icon(Icons.add), onPressed: () {  } , color: Colors.white,
+          )
+
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -61,6 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
           ],
         ),
+      ),
+
+
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){},
       ),
     );
   }
